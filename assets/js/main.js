@@ -227,3 +227,41 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+document.getElementById("email-form").addEventListener("submit", (e) => {
+  e.preventDefault(); 
+  const form = document.getElementById("email-form"); 
+  
+  const formData = new FormData(form);
+  
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const subject = formData.get('subject');
+  const message = formData.get('message');
+
+  const jsonData = {
+    name: name,
+    email: email,
+    subject: subject,
+    message: message
+  }
+  console.log(jsonData)
+
+  // Send AJAX request 
+  fetch('email.php', { 
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(jsonData) 
+  })
+  .then(response => response.json())
+  .then(data => { if (data.status === 'success') { 
+    document.querySelector('.sent-message').style.display = 'block'; 
+  } else {  
+    document.querySelector('.error-message').style.display = 'block';
+    document.querySelector('.error-message').textContent = "Message was not sent."
+  } 
+})
+.catch(error => { 
+  document.querySelector('.error-message').style.display = 'block'; });
+  document.querySelector('.error-message').textContent = "Message was not sent."
+})
