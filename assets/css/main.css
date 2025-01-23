@@ -1517,6 +1517,7 @@ border-radius: 30px;   */
 }
 
 #portfolio{
+  width: 100%;
   background-color: rgb(20, 20, 20);
   position: relative;
 }
@@ -1532,6 +1533,16 @@ border-radius: 30px;   */
   color: var(--heading-color);
   background-color: var(--heading-color);
   border: 0;
+}
+
+
+.project-tittle-con{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project-tittle-con div a i{
+  color: var(--heading-color);
 }
 
 .project-title-border{
@@ -1617,5 +1628,12 @@ border-radius: 30px;   */
     text-align: center;
     margin: 0
   }
+}
+
+#self-image{
+  width: 100%;
+}
+.black{
+  background-color: #060606;
 }
 
