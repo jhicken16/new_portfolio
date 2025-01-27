@@ -255,7 +255,9 @@ document.getElementById("email-form").addEventListener("submit", (e) => {
   })
   .then(response => response.json())
   .then(data => { if (data.status === 'success') { 
-    document.querySelector('.sent-message').style.display = 'block'; 
+    document.querySelector('.sent-message').style.display = 'block';
+    // clear form values here
+    form.reset();
   } else {  
     document.querySelector('.error-message').style.display = 'block';
     document.querySelector('.error-message').textContent = "Message was not sent."
